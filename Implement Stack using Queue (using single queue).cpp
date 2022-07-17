@@ -23,24 +23,38 @@ class Stack {
 
     void push(int element) {
         // Implement the push() function.
+        
         if(st.empty()){
             st.push(element);
             return;
         }
+        st.push(element);
+        int sz = st.size()-1;
         
-        queue<int> t;
-        
-        while(!st.empty()){
-            t.push(st.front());
+        while(sz){
+            st.push(st.front());
             st.pop();
+            sz--;
         }
         
-        st.push(element);
+//         if(st.empty()){
+//             st.push(element);
+//             return;
+//         }
         
-        while(!t.empty()){
-            st.push(t.front());
-            t.pop();
-        }        
+//         queue<int> t;
+        
+//         while(!st.empty()){
+//             t.push(st.front());
+//             st.pop();
+//         }
+        
+//         st.push(element);
+        
+//         while(!t.empty()){
+//             st.push(t.front());
+//             t.pop();
+//         }        
     }
 
     int pop() {
@@ -49,13 +63,12 @@ class Stack {
             return -1;
         int dele = st.front();
         st.pop();
-//         currTop--;
         return dele;
     }
 
     int top() {
         // Implement the top() function.
-         if(!st.size())
+        if(!st.size())
             return -1;
         return st.front();
     }
